@@ -1,0 +1,34 @@
+---
+title: "10-import"
+output: html_notebook
+---
+
+## Load the libraries
+
+Library list: 
+
+```{r libraries_list}
+library(readr)
+library(rjson)
+library(janitor)
+library(assertr)
+library(tidyverse)
+library(lubridate)
+library(glue)
+library(scales)
+```
+
+## Load data
+
+Now we can import the dataset and clean the names first.
+
+```{r import data}
+USvideos <- read_csv("data/USvideos.csv") %>%
+  clean_names()
+```
+
+Now import the category name from JSON file.
+```{r}
+category_id = fromJSON(file = "data/US_category_id.json",  unexpected.escape = "error")
+```
+
